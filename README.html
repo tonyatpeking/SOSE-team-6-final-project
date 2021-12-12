@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 style='text-align: right'> Fall 2021 </h1>
+<p style='margin-bottom: 200px'></p>
+<blockquote>
+<h1 id="technical-report">Technical Report</h1>
+</blockquote>
+<h2 id="p-styleline-height-60-team-members-nahed-abdelgaber-hongjin-yu-p"><p style='line-height: 60%'> Team Members: Nahed Abdelgaber, Hongjin Yu </p></h2>
+<h2 id="p-styleline-height-60-instructor-professor-jia-zhang-p"><p style='line-height: 60%'> Instructor: Professor Jia Zhang </p></h2>
+<p>Enclosed in this document is the technical report of CS8391 Service-Oriented Software Engineering</p>
+<p style='margin-bottom: 40px'></p>
+<h2 id="p-styletext-align-centerline-height-60-computer-science-department-p"><p style='text-align: center;line-height: 60%'> Computer Science Department </p></h2>
+<h2 id="p-styletext-align-centerline-height-60-southern-methodist-university-p"><p style='text-align: center;line-height: 60%'> Southern Methodist University </p></h2>
+<div style='page-break-after: always;'></div>
+<h3 id="technical-report-p-styletext-align-right-mashup-playground-p">Technical Report <p style='text-align: right'> Mashup Playground' </p></h3>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="1-introduction">1.	<a href="#Introduction">Introduction</a></h3>
+<h3 id="2-motivation">2.	<a href="#Motivation">Motivation</a></h3>
+<h3 id="3-related-work">3.	<a href="#Related">Related work</a></h3>
+<h3 id="4-design">4.	<a href="#Design">Design</a></h3>
+<h3 id="5-system-implementation">5.	<a href="#System">System implementation</a></h3>
+<h3 id="6-experimentsanalysis">6.	<a href="#Experiments">Experiments/Analysis</a></h3>
+<h3 id="7-known-issues-bugs-problems">7.	<a href="#Issues">Known issues, bugs, problems</a></h3>
+<h3 id="8-conclusions-and-recommended-future-work">8.	<a href="#Conclusions">Conclusions and recommended future work</a></h3>
+<h3 id="9-documentation">9.	<a href="#Documentation">Documentation</a></h3>
+<div style='page-break-after: always;'></div>
+<h2 id="1-introduction-a-nameintroductiona">1. Introduction <a name='Introduction'></a></h2>
+<p>We aim to create a customizable homepage for users that allows users to create their own mashups using Visual Programming. Users will be able to choose from different data sources / APIs and transform / display the data on their homepage. The product is targeted towards non-technical users, users will not need to know or care about any technologies under the hood: programming languages, servers, API communications, databases, authentication, html/css, etc. In terms of ease of use, think of a Facebook page, 8 year olds and grandmothers can use Facebook, our goal is that they should also be able to use our platform to build mashups. In terms of customizability, think of a physical desktop, where the user can put anything anywhere. Moving objects is intuitive and liberating. We think that the user should be able to turn their homepage into anything they want (in terms of both form and function).</p>
+<h2 id="2-motivation-a-namemotivationa">2. Motivation <a name='Motivation'></a></h2>
+<h3 id="first-observation">First observation:</h3>
+<p>Facebook, Youtube, Netflix, Instagram etc, push content to users and decide what users should see based on algorithm and user's past history.</p>
+<p>This has several problems:</p>
+<ol>
+<li>
+<p>Algorithms will give the user 'junk food' style content, politically polarizing content, content that satisfies the user's short term compulsions but usually don't facilitate long term personal growth. This is further exacerbated by the trend of content creators chasing the algorithms so their content becomes more sensational and less wholesome overtime.</p>
+</li>
+<li>
+<p>When algorithm make mistakes and give the user what they do not want, there is usually no way for user to direct content explicitly. Some services allow for users to provide feedback to the algorithm, but rules are always opaque.</p>
+</li>
+<li>
+<p>Targeted ads and such are based off of user data collection, which have a multitude of problems. Privacy, unwanted products, exposing embarrassing life circumstances etc.</p>
+</li>
+<li>
+<p>Users often want certain content to always show, and/or prioritize their content. For example they have a best friend and they will always leave a reply to that friend's posts. Or they want a section of their page to report the current score of a sports match. Or they want to track covid numbers / stock index etc. Current algorithm curated content will often push irrelevant content to the top and users must 'hunt' for content they really want.</p>
+</li>
+</ol>
+<h3 id="second-observation">Second observation:</h3>
+<p>Users will often have several favorite websites / platforms that they visit and switch between every day. However, most of the content on the website is noise to the user, and they really only care about a small fraction of the content.</p>
+<ul>
+<li>To solve the frequently used website problem, users have used the following strategies:
+<ul>
+<li>Pinning browser tabs</li>
+<li>Having the sites bookmarked and reopen them every time manually / automatically on browser start</li>
+<li>Browser plugins that take snapshots of the sites</li>
+</ul>
+</li>
+<li>The above strategies are ad hoc and are not using a tool optimized for the requirement.</li>
+<li>There is no way for users to filter out noise.</li>
+</ul>
+<h3 id="third-observation">Third observation:</h3>
+<p>Many platforms have an ecosystem of software and services that provide the user with great value. However the software on each platform is always slightly different, with slightly different features and UI. The user has to context switch and relearn the same software multiple times. Take the simplest example, a weather app on windows and android. Both convey the same information yet each one has a different layout, and different ways to navigate.</p>
+<h3 id="forth-observation">Forth observation:</h3>
+<ul>
+<li>APIs are often either simple, but poorly documented, or complex and over-engineered with documentation that can fill books.</li>
+<li>APIs from different companies often use different documentation notation, different authentication methods, different calling conventions, etc.
+<ul>
+<li>For example Twitter and Google API use completely different authentication methods.</li>
+<li>Twitter API can not be called from a browser (frontend)</li>
+<li>Google forces developers to go through a very long process of registering, verification, configuration before calling the simplest of their APIs.</li>
+</ul>
+</li>
+<li>To build a Mashup, often several APIs need to be called. Learning the quirks for all can be time consuming and challenging.</li>
+<li>To exacerbate the problem, companies often 'upgrade' their api, making developers learn the new conventions all over again.</li>
+<li>In summary, using an API is harder that is <strong>should</strong> be.</li>
+</ul>
+<h3 id="what-we-aim-to-solve">What we aim to solve</h3>
+<p>The above observations suggest that there is a niche in the market that is not being fulfilled, the product should meet the following requirements:</p>
+<ul>
+<li>Self directed.
+<ul>
+<li>Users are fed up by being fed. Users should be able to choose, with granularity what content they want to see.</li>
+<li>Self directed also serves as a noise filter. Users constantly being fed by what the algorithm thinks will interest them will indeed keep their eyes glued to the screen in the short term, but will often lead to burnout in the long term.</li>
+</ul>
+</li>
+<li>Ease of use.
+<ul>
+<li>Node based visual programming.</li>
+<li>Only node sockets of matching types can be connected.</li>
+<li>Control flow is visual and intuitive.</li>
+<li>Data flowing through sockets can be inspected.</li>
+<li>Nodes that give visual representation of complex data.</li>
+<li>APIs just work. APIs are represented as Nodes, with input / output. Little to no configuration to call an API.</li>
+<li>All APIs have a working example that the user can reference / modify.</li>
+</ul>
+</li>
+<li>Content aggregation.
+<ul>
+<li>Today, users' attention is becoming fragmented. Users need to 'hunt' for the same content they want every day (opening up several different sources, navigating, filtering out noise).</li>
+<li>Content should come to the user, when the user wants it, in the format the user wants, without additional baggage.</li>
+<li>User should feel like a president or a CEO. Information flowing to them should be filtered and organized as if by a personal secretary. Instead, users today feel like slaves with multiple masters. Platforms ensnare users with social, psychological and biological pressures, and users are compelled to hunt for information on different platforms, with different rules and bombarded with noise.</li>
+</ul>
+</li>
+<li>Fully customizable layout and priorities.
+<ul>
+<li>User should be able to set content priority instead of letting AI choose.</li>
+<li>User organizes things the way they want to, and they stay that way.</li>
+</ul>
+</li>
+<li>Unified experience between platforms.
+<ul>
+<li>Don't force the user to context switch to different platforms.</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-related-work-a-name%22related%22a">3. Related work <a name="Related"></a></h2>
+<h3 id="parabolaio">parabola.io</h3>
+<ul>
+<li>https://parabola.io/</li>
+<li>The UI and Visual Programming component is similar to what we propose, however they have a different target audience.</li>
+<li>At a high level, their app allows:
+<ul>
+<li>Pulling data from APIs</li>
+<li>Storing the data in a data table similar to excel</li>
+<li>Providing Visual Programming to manipulate data tables</li>
+<li>Export data tables to API</li>
+</ul>
+</li>
+<li>Focused on data gathering and reporting.
+<ul>
+<li>Sales reporting.</li>
+<li>Marketing Reporting.</li>
+<li>Customer Management.</li>
+<li>Inventory Management.</li>
+</ul>
+</li>
+<li>Nodes are very hight level.
+<ul>
+<li>Easy to visualize general data flow.</li>
+<li>Connection between nodes do not show data type / assumed to be data tables.</li>
+</ul>
+</li>
+</ul>
+<h3 id="scriptableapp">scriptable.app</h3>
+<ul>
+<li>https://scriptable.app/</li>
+<li>Automate tasks by using javascript and calling APIs.</li>
+<li>iOS only.</li>
+<li>No Visual Programming.</li>
+</ul>
+<h3 id="visual-apis">Visual APIs</h3>
+<ul>
+<li>https://vap.is/</li>
+<li>From their description they aim to achieve something similar to us.</li>
+<li>No actual working examples.</li>
+<li>Everything on website is &quot;Coming Soon…&quot;</li>
+</ul>
+<h3 id="rapid-api">Rapid API</h3>
+<ul>
+<li>https://rapidapi.com/</li>
+<li>Allows for easy testing of APIs</li>
+<li>Most examples work out of box</li>
+<li>Targeted toward API discovery / documentation / testing</li>
+<li>No scripting component</li>
+</ul>
+<h3 id="android-widgets">Android widgets</h3>
+<ul>
+<li>There is a widget for everything that shows you information you want on your android home screen. For example the author has one that directly controls his audio book player, and another that tracks stocks / cryptocurrencies.</li>
+<li>This is the most similar technology to what we want.</li>
+<li>We are different because we are using web technology, so the user will have a unified experience across platforms. e.g. logging in to the website with their phone / pc / mac / smart TV will show the same (responsive) content. Switching devices will not interrupt user experience.</li>
+<li>Android widgets is more limited as it must fit in one page and must adhere to android UI conventions.</li>
+<li>Android widgets is really out of place living in the same space as apps.</li>
+</ul>
+<h3 id="windows-start-menu-and-widgets">Windows start menu and widgets</h3>
+<ul>
+<li>Same concept as android widgets</li>
+<li>Platform dependent</li>
+<li>Poor ecosystem. No developers -&gt; no users -&gt; no developers -&gt; no users -&gt; ...</li>
+<li>We are using web technology which already has a good ecosystem.</li>
+</ul>
+<h3 id="browser-homepage-plugins">Browser homepage plugins</h3>
+<ul>
+<li>Various browsers have plugins that allow the homepage to be customized to show snapshots of favorite websites.</li>
+<li>The website snapshots are limited in usefulness. A shrunken down snapshot of a website does not usually convey information a user really wants.</li>
+</ul>
+<h3 id="social-media-aggregation-websites">Social media aggregation websites</h3>
+<ul>
+<li>These are usually geared toward content creators to keep track / push to all sites, and for data analytics.</li>
+<li>Not geared toward content consumers.</li>
+<li>Not easy to use.</li>
+</ul>
+<h3 id="rss-feeds">RSS Feeds</h3>
+<ul>
+<li>Not user friendly to set up</li>
+<li>Requires software</li>
+</ul>
+<h2 id="4-design-a-name%22design%22a">4. Design <a name="Design"></a></h2>
+<ul>
+<li>Design Goal: Present APIs to non-technical users in a easy to digest manner.</li>
+<li>Users are presented with a 'homepage'.</li>
+<li>Users can create Nodes by right-clicking and selecting a Node type.</li>
+<li>Nodes can represent APIs or programming functions.</li>
+<li>Nodes have input and outputs, with the datatype color coded.
+<ul>
+<li>Only datatypes that are the same can be connected.</li>
+</ul>
+</li>
+<li>There are also Nodes that provide programming functionality, that take an input, manipulate the data, and output data.</li>
+<li>Users program by simply connecting Nodes.</li>
+<li>User can connect APIs and manipulate data from APIs using node based Visual Programming.</li>
+<li>User gets to enjoy personalized, self directed content from a myriad of sources in a single place.</li>
+</ul>
+<h2 id="5-system-implementation-a-name%22system%22a">5. System implementation <a name="System"></a></h2>
+<h3 id="development-environment">Development Environment</h3>
+<ul>
+<li>Our app is created and hosted on <code>anvil.works</code></li>
+<li>https://anvil.works/</li>
+<li>This is a full stack python solution that includes:
+<ul>
+<li>Database: Fully managed PostgreSQL database, can be accessed with normal python syntax. (Similar to ebean for java)</li>
+<li>Backend: Python functions
+<ul>
+<li>Can expose functions as API routes / endpoints</li>
+</ul>
+</li>
+<li>Frontend: Python that compiles to javascript
+<ul>
+<li>Frontend can directly call backend functions without needing to use routes (though using routes is also possible).</li>
+</ul>
+</li>
+<li>Graphical Frontend UI designer.
+<ul>
+<li>WYSIWYG</li>
+</ul>
+</li>
+<li>Online code editor.
+<ul>
+<li>At first we were hesitant about this feature, since online code editors have usually been laggy and unintuitive, most developers would rather stick with their familiar IDE that is on their local machine. However, we found many advantages to the online code editor that makes it very practical.</li>
+<li>Frontend intellisense is aware of backend functions.</li>
+<li>Frontend intellisense is aware of database column names and types.</li>
+<li>Frontend intellisense is aware of UI elements.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>We chose Anvil for it's ease of use.
+<ul>
+<li>Only one programming language needed across the whole stack - Python.</li>
+<li>No need to learn javascript, html, css, database query language, etc.</li>
+<li>Easy and free hosting.</li>
+<li>In practice, only took 5 minutes to walk through and deploy the tutorial app to the internet.</li>
+</ul>
+</li>
+</ul>
+<h3 id="visual-programming-library">Visual Programming Library</h3>
+<ul>
+<li>For Visual Programming we did not make our own solution, and decided to use a popular javascript Visual Programming library: <code>rete.js</code></li>
+<li>https://rete.js.org/</li>
+<li>https://github.com/retejs/rete</li>
+<li>With over 7k stars on github, it is one of the more popular and established Visual Programming libraries.</li>
+<li>Each node allows for custom logic.</li>
+<li>Each node allows for custom html component for rendering.</li>
+<li>We implemented different colored sockets for different data types.</li>
+<li>We implemented custom node for calling / rendering map API.</li>
+</ul>
+<h3 id="project-files-and-outline">Project files and outline</h3>
+<h4 id="client-code-runs-in-browser">Client Code (Runs in browser)</h4>
+<ul>
+<li><code>ApiComponents.py</code>
+<ul>
+<li><code>MapComponent</code>:
+<ul>
+<li>Input: <code>geojson</code></li>
+<li>Process: Calls <code>leaflet.js</code> API</li>
+<li>Display: Pins on an embedded map</li>
+</ul>
+</li>
+<li><code>MyIpComponent</code>:
+<ul>
+<li>Process: Calls <code>ipify.org</code> API</li>
+<li>Output: <code>string</code> (Browser IP address)</li>
+</ul>
+</li>
+<li><code>IpToGeojsonComponent</code>:
+<ul>
+<li>Input: <code>string</code> (IP address)</li>
+<li>Process: Calls <code>geojs.io</code> API to get geographic information from IP, formats latitude and longitude as a geojson object.</li>
+<li>Output: geojson</li>
+</ul>
+</li>
+<li><code>WeatherComponent</code>:
+<ul>
+<li>Input: <code>string</code> (IP address)</li>
+<li>Process: Calls <code>weatherapi.com</code> API</li>
+<li>Output: json (Object that contains weather information)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>BasicComponents.py</code>
+<ul>
+<li><code>BaseComponent</code>
+<ul>
+<li>All components inherit from this</li>
+<li>Acts as a bridge between <code>Python</code> and <code>javascript (rete.js)</code></li>
+</ul>
+</li>
+<li><code>NumberComponent</code>
+<ul>
+<li>Input Box: User can input a <code>number</code> here</li>
+<li>Output: <code>number</code> (that user input)</li>
+</ul>
+</li>
+<li><code>AddComponent</code>
+<ul>
+<li>Input: Two <code>numbers</code></li>
+<li>Process: Sum two numbers</li>
+<li>Output: <code>number</code> (sum)</li>
+</ul>
+</li>
+<li><code>ToStringComponent</code>
+<ul>
+<li>Input: <code>any</code> Any type</li>
+<li>Output Box: Converts any type to string</li>
+<li>Output: <code>string</code></li>
+</ul>
+</li>
+<li><code>TextAreaComponent</code>
+<ul>
+<li>Input Box: User can input a <code>string</code> here</li>
+<li>Output: <code>string</code> (that user input)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Editor.py</code>
+<ul>
+<li>Acts as a bridge between <code>Python</code> and <code>javascript (rete.js)</code></li>
+<li>Defines a default <code>editor</code> and <code>engine</code> the rete.js use</li>
+<li>Methods to construct and connect <code>editor</code> to <code>DOM</code> elements</li>
+</ul>
+</li>
+<li><code>Mainpage.py</code>
+<ul>
+<li>Main entry point</li>
+<li>References to <code>DOM</code> elements</li>
+</ul>
+</li>
+</ul>
+<h4 id="server-code">Server Code</h4>
+<ul>
+<li>None</li>
+<li>We try to keep all logic on the frontend (inside user browser). This makes all function calls faster as there is no need for a round trip to the backend server. The functionality of our app is user driven, therefore we implicitly trust the user and allow the user to do anything they want with the app / their own browser.</li>
+<li>One thing we cut for our MVP is user logins and saving / loading their own page. If we did implement user logins and save / load, then the code for handling it would be on the backend.</li>
+<li>All <code>rete.js</code> Nodes along with their data and connections, are represented as json objects, therefore it is straightforward to implement a saving functionality. We could simply take the json object, convert it to a string and store it in the database along with the user ID.</li>
+</ul>
+<h4 id="assets">Assets</h4>
+<ul>
+<li><code>rete-controls.js</code>
+<ul>
+<li>Custom rendering for inputs boxes and map node.</li>
+</ul>
+</li>
+<li><code>rete-styles.css</code>
+<ul>
+<li>Custom coloring for Node sockets of different types.</li>
+<li>Custom sizes for map Node</li>
+</ul>
+</li>
+</ul>
+<h4 id="native-librarieshtml"><code>native-libraries.html</code></h4>
+<ul>
+<li>This file is injected into the &lt;head&gt; element of the app</li>
+<li>Downloads javascript from CDNs (Content delivery network)
+<ul>
+<li><code>rete.js</code> and relevant plugins</li>
+<li><code>leaflet.js</code></li>
+</ul>
+</li>
+<li>Links to stylesheets and javascript</li>
+</ul>
+<h2 id="6-experimentsanalysis-a-name%22experiments%22a">6. Experiments/Analysis <a name="Experiments"></a></h2>
+<h3 id="our-project-is-currently-deployed-and-online">Our project is currently deployed and online</h3>
+<p>Go to https://sose-team6-project.anvil.app/</p>
+<ul>
+<li>We are using free tier for all APIs, so they may hit quota limits if this paged is accessed by too many people.</li>
+</ul>
+<h3 id="overview">Overview:</h3>
+<p>By accessing the above url, you should see something similar:</p>
+<p><img src="docs/overview.png" alt="alt text"></p>
+<p>Components from left to right:</p>
+<ul>
+<li><code>MyIpComponent</code>: This will call <code>ipify.org</code> API and return the browsers' IP address.</li>
+<li><code>IpToGeojsonComponent</code>: Calls <code>geojs.io</code> API to get geographic information from IP, formats latitude and longitude as a geojson object.</li>
+<li><code>WeatherComponent</code>: Calls <code>weatherapi.com</code> API to get weather location from IP. The output is a json format that is not too user friendly, in the future we can add a Node that breaks out the json into individual objects and let the user choose what they are interested in, e.g. A amateur airplane pilot might be interested only in wind direction and wind speed.</li>
+<li><code>MapComponent</code>: Displays information from a geojson object to a map. The geojson represent not only pins on a map but also shapes, areas and lines.</li>
+<li>Notice that only sockets with the same color can be connect together.</li>
+</ul>
+<p>By using a VPN to Hong Kong, we can see all the information will change, and will be correct for Hong Kong:</p>
+<p><img src="docs/hongkong.png" alt="alt text"></p>
+<p>By right clicking we can select from a list of Nodes. (UI scale is a bit buggy)</p>
+<p><img src="docs/rightclick.png" alt="alt text"></p>
+<p>Simple math demonstration. In the future we can add any programming functionality.</p>
+<p><img src="docs/add.png" alt="alt text"></p>
+<p>Text box and string conversion</p>
+<p><img src="docs/string.png" alt="alt text"></p>
+<h2 id="7-known-issues-bugs-problems-a-name%22issues%22a">7. Known issues, bugs, problems <a name="Issues"></a></h2>
+<ul>
+<li>The app does not seem to run in the Safari browser. Tested and works in Chrome on Windows, Mac and Android.</li>
+<li>Right clicking on a node will case an error (will not crash app, can be ignored).</li>
+<li>Right clicking on empty space to bring up Node menu, Node menu is scaled incorrectly.</li>
+<li>Map currently does not auto-zoom to your location. Currently map is zoomed in at SMU by default. If you are in another location, you may need to scroll the map to find it.</li>
+<li>Connections are sometimes not aligned with sockets.</li>
+</ul>
+<h2 id="8-conclusions-and-recommended-future-work-a-name%22conclusions%22a">8. Conclusions and recommended future work <a name="Conclusions"></a></h2>
+<h3 id="conclusion">Conclusion</h3>
+<ul>
+<li>Our App serves as a demonstration of the capabilities we proposed. We think that it is intuitive and easy to understand and use. We have demonstrated that APIs do not need to be hard to use.</li>
+<li>With our App the user can easily call APIs and display their data. The data can be manipulated (to a limited capacity for now).</li>
+<li>The user can organize and display the data anywhere on their page (only a map for now)</li>
+</ul>
+<h3 id="future-work">Future work</h3>
+<ul>
+<li>More types of APIs Nodes.</li>
+<li>More ways to manipulate data (functions).</li>
+<li>Node that allows writing arbitrary <code>javascript</code> / <code>python</code> code (This is run in the user's own browser, so security is not an issue)</li>
+<li>More ways to show data (spreadsheets, graphs, charts).</li>
+<li>Allow for upload / download of files.</li>
+<li>Allow users to login and save / load their mashups.</li>
+<li>Allow users to share mashups with one button.</li>
+</ul>
+<h2 id="9-documentation-a-name%22documentation%22a">9. Documentation <a name="Documentation"></a></h2>
+<ul>
+<li>App URL: https://sose-team6-project.anvil.app/</li>
+<li>App is already deployed to the internet, so no need to set up environment, just open link in browser (Tested in Chrome).</li>
+<li>Developer URL: https://anvil.works/login</li>
+<li>You can register an account for free</li>
+<li>Link to Clone entire project:
+<ul>
+<li>https://anvil.works/build#clone:5ZB5IZ3V42KBXL6P=HTDVWYNPBVHBXJ4YLJZXWFNX</li>
+<li>Should work out-of-the-box</li>
+<li>Feel free to make any changes to the clone as it will not affect the master branch</li>
+</ul>
+</li>
+<li>Link to github (This is only for archival purposes, the project must run on <code>anvil.work</code> so using the above clone method is the easiest way to set up the project.
+<ul>
+<li>https://github.com/tonyatpeking/SOSE-team-6-final-project</li>
+</ul>
+</li>
+</ul>
+<h2 id="contact">Contact</h2>
+<h3 id="nahed-abdelgaber">Nahed Abdelgaber</h3>
+<ul>
+<li>nabdelgaber@smu.edu</li>
+</ul>
+<h3 id="hongjin-yu">Hongjin Yu</h3>
+<ul>
+<li>hongjiny@smu.edu</li>
+<li>201-892-2014</li>
+</ul>
+
+</body>
+</html>
