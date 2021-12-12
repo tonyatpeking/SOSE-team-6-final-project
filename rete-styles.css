@@ -1,0 +1,59 @@
+/* socket colors */
+.socket.number-socket {
+  background: #9421ff;
+}
+
+.socket.json-socket {
+  background: #00ff9d;
+}
+
+.socket.geojson-socket {
+  background: #c8ff00;
+}
+
+.socket.string-socket {
+  background: #ffca1c;
+}
+
+.socket.bool-socket {
+  background: #ff00c8;
+}
+
+.socket.image-socket {
+  background: #1900ff;
+}
+
+.socket.audio-socket {
+  background: #00d9ff;
+}
+
+.socket.video-socket {
+  background: #ff0000;
+}
+
+.socket.file-socket {
+  background: #ff8800;
+}
+
+.socket.trigger-socket {
+  background: #000000;
+}
+
+.socket.any-socket {
+  background: #ffffff;
+}
+
+/* Map container height */
+.leaflet-container {
+  height: 400px;
+}
+
+/* Map Node width */
+.node.mapcomponent {
+  min-width: 600px;
+}
+
+textarea.textarea-control {
+  min-width: 600px;
+  height: 400px;
+}
